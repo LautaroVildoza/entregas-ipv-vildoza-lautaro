@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bujb6yf0mg474"]
+
+[ext_resource type="Script" uid="uid://kgvpbyplbqaa" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://f2t1f8onwwas" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="AudioStream" uid="uid://dxsmfrst354up" path="res://art/House In a Forest Loop.ogg" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b1we2bc30jyy4" path="res://Mob.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://civgec8nq3tu4" path="res://HUD.tscn" id="4_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://bi1y3xvkk2gip" path="res://art/gameover.wav" id="4_272bh"]
+
+[sub_resource type="Curve2D" id="Curve2D_h2yge"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 718, 0, 0, 0, 0, 2, 714, 0, 0, 0, 0, 0, -1)
+}
+point_count = 5
+
+[node name="Main" type="Node" unique_id=758951544]
+script = ExtResource("1_0xm2m")
+mob_scene = ExtResource("3_h2yge")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=843822637]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.35229447, 0.56491953, 0.22452024, 1)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=398820736]
+stream = ExtResource("3_7mycd")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1534481901]
+stream = ExtResource("4_272bh")
+
+[node name="MobTimer" type="Timer" parent="." unique_id=279639830]
+wait_time = 0.5
+
+[node name="Player" parent="." unique_id=2010818876 instance=ExtResource("1_ig7tw")]
+
+[node name="ScoreTimer" type="Timer" parent="." unique_id=471631326]
+
+[node name="StartTimer" type="Timer" parent="." unique_id=1106575903]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="." unique_id=1955537101]
+position = Vector2(240, 450)
+
+[node name="MobPath" type="Path2D" parent="." unique_id=1655334655]
+curve = SubResource("Curve2D_h2yge")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath" unique_id=1255047791]
+position = Vector2(0, -1)
+rotation = 0.0020833302
+
+[node name="HUD" parent="." unique_id=722148606 instance=ExtResource("4_1bvp3")]
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

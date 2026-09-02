@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b1we2bc30jyy4"]
+
+[ext_resource type="Texture2D" uid="uid://bdfnsx7laygm1" path="res://art/enemyFlyingAlt_1.png" id="1_5bhu7"]
+[ext_resource type="Script" uid="uid://biah0u5gyxfwt" path="res://mob.gd" id="1_ejbti"]
+[ext_resource type="Texture2D" uid="uid://im626jccgh00" path="res://art/enemyFlyingAlt_2.png" id="2_ejbti"]
+[ext_resource type="Texture2D" uid="uid://dlfdvguotfp7b" path="res://art/enemySwimming_1.png" id="3_ch7wj"]
+[ext_resource type="Texture2D" uid="uid://beqmxtaqhbjs0" path="res://art/enemySwimming_2.png" id="4_x4v8o"]
+[ext_resource type="Texture2D" uid="uid://h21x74lyt1v4" path="res://art/enemyWalking_1.png" id="5_w71a0"]
+[ext_resource type="Texture2D" uid="uid://dyb0cmy5l2k10" path="res://art/enemyWalking_2.png" id="6_utplx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tiug6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5bhu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ejbti")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ch7wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x4v8o")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_w71a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_utplx")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tiug6"]
+radius = 48.0
+height = 134.0
+
+[node name="mob" type="RigidBody2D" unique_id=159971629 groups=["mobs"]]
+gravity_scale = 0.0
+script = ExtResource("1_ejbti")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=534483165]
+rotation = 1.5707964
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_tiug6")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291688818]
+position = Vector2(-1, -5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tiug6")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=114503114]
