@@ -1,0 +1,7 @@
+res://default_env.tres
+res://Main.tscn
+res://entities/enemies/TurretsSpawner.gd
+res://entities/enemies/Turret.gd
+res://entities/player/Player.gd
+res://entities/player/Cannon.gd
+res://entities/player/Player.tscn
