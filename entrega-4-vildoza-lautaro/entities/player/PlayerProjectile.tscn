@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://qsihxoelrc05"]
+
+[ext_resource type="PackedScene" uid="uid://cphg7jydeeyqh" path="res://entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bgwqma6wob4dw" path="res://assets/textures/proyectile_player.png" id="2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiug6"]
+
+[node name="PlayerProjectile" unique_id=737313728 instance=ExtResource("1")]
+texture = ExtResource("2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=1214195964]
+
+[node name="Hitbox" type="Area2D" parent="." index="2" unique_id=1460393987]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=17428470]
+shape = SubResource("CircleShape2D_tiug6")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
