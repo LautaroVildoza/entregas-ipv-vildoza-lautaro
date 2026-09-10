@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3 uid="uid://cvrkt31tsjrjw"]
 
-[ext_resource path="res://entities/Projectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/textures/proyectile_turret.png" type="Texture2D" id=2]
+[ext_resource type="PackedScene" uid="uid://cphg7jydeeyqh" path="res://entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://baoiu3dij5lcd" path="res://assets/textures/proyectile_turret.png" id="2"]
 
-[node name="TurretProjectile" instance=ExtResource( 1 )]
-texture = ExtResource( 2 )
+[sub_resource type="CircleShape2D" id="CircleShape2D_tiug6"]
+
+[node name="TurretProjectile" unique_id=327105803 instance=ExtResource("1")]
+texture = ExtResource("2")
 VELOCITY = 400.0
 
-[node name="LifetimeTimer" parent="." index="0"]
+[node name="LifetimeTimer" parent="." index="0" unique_id=1022000276]
 wait_time = 3.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=1811883855]
+
+[node name="Hitbox" type="Area2D" parent="." index="2" unique_id=907933039]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=286824642]
+shape = SubResource("CircleShape2D_tiug6")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

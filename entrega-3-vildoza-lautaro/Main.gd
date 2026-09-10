@@ -1,9 +1,8 @@
 extends Node
 
-@onready var player = $Player
-@onready var turret_spawner = $TurretsSpawner
+@onready var player: Node2D = $Player
+@onready var turret_spawner: Node = $TurretsSpawner
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	player.initialize(self)
-	turret_spawner.initialize(player)

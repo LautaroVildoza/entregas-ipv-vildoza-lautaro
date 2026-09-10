@@ -1,5 +1,9 @@
 extends Node
 
+@onready var player = $Player
+@onready var turret_spawner = $TurretsSpawner
+
 func _ready():
-	$Player.set_projectile_container(self)
-	$TurretSpawner.spawn_turrets($Player, self)
+	randomize()
+	player.initialize(self)
+	turret_spawner.initialize(player)

@@ -1,28 +1,21 @@
 extends Sprite2D
+
+@onready var fire_position = $FirePosition
+@onready var fire_timer = $FireTimer
+
 @export var projectile_scene: PackedScene
-@export var projectile_container:Node
 
-@onready var fire_position:Marker2D = $FirePosition
 var player
+var projectile_container
 
-func set_values(player, projectile_container):
+func initialize(container, turret_pos, player, projectile_container):
+	container.add_child(self)
+	global_position = turret_pos
 	self.player = player
 	self.projectile_container = projectile_container
-	$Timer.start()
-	
+	fire_timer.connect("timeout", Callable(self, "fire_at_player"))
+	fire_timer.start()
 
-
-func _on_timer_timeout() -> void:
-	fire()
-
-func fire():
-	var projectile:Projectile = projectile_scene.instantiate()
-	projectile_container.add_child(projectile)
-	projectile.set_starting_values(fire_position.global_position, (player.global_position - fire_position.global_position).normalized())
-	projectile.delete_requested.connect(_on_projectile_delete_requested)
-
-
-func _on_projectile_delete_requested(projectile):
-	projectile_container.remove_child(projectile)
-	projectile.queue_free()
-	
+func fire_at_player():
+	var proj_instance = projectile_scene.instantiate()
+	proj_instance.initialize(projectile_container, fire_position.global_position, fire_position.global_position.direction_to(player.global_position))

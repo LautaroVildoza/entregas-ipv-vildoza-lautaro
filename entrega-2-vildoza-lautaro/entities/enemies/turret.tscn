@@ -1,17 +1,15 @@
-[gd_scene format=3 uid="uid://bst82fvk0ns7g"]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource type="Texture2D" uid="uid://d2ug0mybgeebc" path="res://assets/textures/turret.png" id="1_sy5ka"]
-[ext_resource type="Script" uid="uid://0tfjjqa7sd13" path="res://entities/enemies/turret.gd" id="2_h6tj7"]
-[ext_resource type="PackedScene" uid="uid://cetuje47r4rhw" path="res://entities/enemies/projectileEnemi.tscn" id="3_aiw5j"]
+[ext_resource path="res://assets/textures/turret.png" type="Texture2D" id=1]
+[ext_resource path="res://entities/enemies/Turret.gd" type="Script" id=2]
+[ext_resource path="res://entities/enemies/TurretProjectile.tscn" type="PackedScene" id=3]
 
-[node name="Turret" type="Sprite2D" unique_id=2088793801]
-texture = ExtResource("1_sy5ka")
-script = ExtResource("2_h6tj7")
-projectile_scene = ExtResource("3_aiw5j")
+[node name="Turret" type="Sprite2D"]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+projectile_scene = ExtResource( 3 )
 
-[node name="FirePosition" type="Marker2D" parent="." unique_id=1341614464]
-position = Vector2(0, -28)
+[node name="FireTimer" type="Timer" parent="."]
 
-[node name="Timer" type="Timer" parent="." unique_id=1888888292]
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="FirePosition" type="Marker2D" parent="."]
+position = Vector2( 0, -30.0339 )
