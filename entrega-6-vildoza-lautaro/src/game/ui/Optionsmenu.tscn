@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cqkapbwq5gq3i"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="1_eolqf"]
+[ext_resource type="Script" uid="uid://nauru30wjxpp" path="res://src/game/ui/optionsmenu.gd" id="1_ue1t6"]
+[ext_resource type="PackedScene" uid="uid://dh75a0sk5sqi6" path="res://src/game/ui/Actioninput.tscn" id="2_u5fax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiug6"]
+bg_color = Color(0.20784314, 0.1254902, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.93333334, 0.6666667, 1)
+corner_detail = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xif3j"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1cm"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkec7"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkluq"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[node name="OptionsMenu" type="Control" unique_id=2100541904]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ue1t6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1573004504]
+layout_mode = 0
+offset_right = 287.0
+offset_bottom = 162.0
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="MainPanel" type="Panel" parent="." unique_id=992428648]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 16.0
+offset_right = 239.0
+offset_bottom = 144.0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_tiug6")
+
+[node name="Label" type="Label" parent="MainPanel" unique_id=1866752818]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1.0
+offset_right = 131.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_eolqf")
+theme_override_font_sizes/font_size = 21
+text = "Options"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="MainPanel" unique_id=1416684094]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 4.564
+anchor_right = 0.5
+anchor_bottom = 4.564
+offset_left = -27.0
+offset_top = -486.19202
+offset_right = 28.0
+offset_bottom = -463.19202
+theme_override_fonts/font = ExtResource("1_eolqf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Return"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel" unique_id=1749515581]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 190.0
+offset_bottom = 93.0
+draw_focus_border = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ScrollContainer" unique_id=113045310]
+layout_mode = 2
+
+[node name="ActionInput" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=456768553 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "A"
+action_name = "Move Left"
+
+[node name="ActionInput2" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=244453844 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "D"
+action_name = "Move right"
+
+[node name="ActionInput3" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=1766182173 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "W"
+action_name = "Jump"
+
+[node name="ActionInput4" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=202115157 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "Shift"
+action_name = "Dash"
+
+[node name="ActionInput5" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=2090951335 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "T"
+action_name = "Show Enemy Detection Area"
+
+[node name="ActionInput6" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=1664660036 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "R"
+action_name = "Attack weapon3"
+
+[node name="ActionInput7" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=226890056 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "E"
+action_name = "Weapon Next"
+
+[node name="ActionInput8" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=186683869 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "Q"
+action_name = "Weapon prev"
+
+[node name="ActionInput9" parent="MainPanel/ScrollContainer/VBoxContainer" unique_id=1691189171 instance=ExtResource("2_u5fax")]
+layout_mode = 2
+action_input = "Esc"
+action_name = "Pause Menu"
+
+[connection signal="pressed" from="MainPanel/ReturnButton" to="." method="hide"]

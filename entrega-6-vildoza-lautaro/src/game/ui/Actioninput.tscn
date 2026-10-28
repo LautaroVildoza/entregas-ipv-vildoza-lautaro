@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dh75a0sk5sqi6"]
+
+[ext_resource type="Script" uid="uid://cus4i4scgsw1h" path="res://src/game/ui/actioninput.gd" id="1_t3sa4"]
+
+[node name="ActionInput" type="PanelContainer" unique_id=456768553]
+script = ExtResource("1_t3sa4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=9399028]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="PanelContainer" parent="HBoxContainer" unique_id=1008284680]
+layout_mode = 2
+
+[node name="Input" type="Label" parent="HBoxContainer/Panel" unique_id=846339645]
+unique_name_in_owner = true
+layout_mode = 2
+text = "A"
+
+[node name="Action" type="Label" parent="HBoxContainer" unique_id=1827067290]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Move Left"
+horizontal_alignment = 1
+vertical_alignment = 1
